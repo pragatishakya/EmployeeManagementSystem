@@ -26,7 +26,7 @@ app.get("/showAllUser",(req,res)=>{
     db.query(sql,(err,result)=>{
         if(err) throw err
         else {
-            // res.json(result)
+            // res.json({list:result})
             res.render('show',{list:result})
         }
     })
@@ -37,7 +37,8 @@ app.get("/showUser/:id",(req,res)=>{
     db.query(sql,(err,result)=>{
         if(err) throw err
         else
-        res.json(result)
+        // res.json(result)
+        res.render('change',{list:result})
     })
 })
 
@@ -50,20 +51,22 @@ app.get("/deleteUser/:id",(req,res)=>{
         res.redirect("/showAllUser")
     })
 })
-
+ 
 app.post("/updateUser/:id",(req,res)=>{
     const name=req.body.name
     const email=req.body.email
     const city=req.body.city
     const phone= req.body.phone
-    const sql=`UPDATE employee SET name='${name}', email='${email}', city='${city}', phone='${phone}'`
+    const sql=`UPDATE employee SET name='${name}',email='${email}',city='${city}',phone='${phone}' WHERE id=${req.params.id}`
     db.query(sql,(err,result)=>{
         if(err) throw err
         else
-        // res.json(result)
-        res.render('show')
+        res.redirect("/showAllUser")
+        // console.log({list:result})
     })
 })
+
+
 
 app.get("/",(req,res)=>{
     res.render('home')

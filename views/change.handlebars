@@ -1,0 +1,48 @@
+<div class="container">
+{{list}}
+  {{#each list}}
+<form method="post" action="http://localhost:3000/updateUser/{{this.id}}">
+  <fieldset>
+    <legend>UPDATE USER DETAILS</legend>
+    <div class="form-group row">
+      <label for="id" class="col-sm-2 col-form-label">Employee id</label>
+      <div class="col-sm-10">
+        <input type="text" readonly="" class="form-control me-sm-2" id="id" value="{{this.id}}" name="id">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Employee Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control me-sm-2" id="name" value="{{this.name}}" name="name">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="Email" class="col-sm-2 col-form-label">Employee Email</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control me-sm-2" id="Email" value="{{this.email}}" name="email">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="city" class="col-sm-2 col-form-label">City</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control me-sm-2" id="city" value="{{this.city}}" name="city">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="phone" class="col-sm-2 col-form-label">Contact number</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control me-sm-2" id="phone" value="{{this.phone}}" name="phone">
+      </div>
+    </div>
+    <br>
+    {{/each}}
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="http://localhost:3000/showAllUser" class="btn btn-success">Show All Users</a>
+  </fieldset>
+</form>
+</div>
